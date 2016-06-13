@@ -33,11 +33,57 @@ class pretreatment():
         line = f.write(string+"\n")
         f.close()
 
-def main():
-	p = pretreatment()
-	dataset = p.read_txt('raw.txt')
-	dataset = [dataset[i].split('\t') for i in range(len(dataset))]
-	print dataset[0]
+def PP_time():
+    p = pretreatment()
+    raw = p.read_txt('male_raw.txt')
+    raw = [raw[i].split('\t') for i in range(len(raw))]
+    for i in range(len(raw)):
+        raw[i][1] = raw[i][1][0:4]
+    # print raw[0]
+    pp = p.read_txt('male_pp.txt')
+    print pp
+    pp_time = []
+    for i in range(len(pp)):
+    	temp = [pp[i]]
+    	pp_time_temp = []
+        for j in range(len(raw)):
+        	if pp[i] in raw[j][0]:
+        		pp_time_temp.append(raw[j][1])
+        # pp_time_temp = list(set(pp_time_temp))
+        # pp_time_temp = sorted(pp_time_temp)
+        temp.extend(sorted(list(set(pp_time_temp))))
+        # print temp
+        pp_time.append(temp)
+        # break
+    print pp_time[0:2]
+    p.writeMatrix(pp_time,'male_PP_time.txt')
+
+def pp_feature():
+    p = pretreatment()
+    raw = p.read_txt('male_raw.txt')
+    raw = [raw[i].split('\t') for i in range(len(raw))]
+    for i in range(len(raw)):
+        raw[i][1] = raw[i][1][0:4]
+    # print raw[0]
+    pp = p.read_txt('male_pp.txt')
+    print pp
+    feature = p.read_txt('male_feature_n_a.txt')
+    print feature
+    pp_feature = []
+    for i in range(len(pp)):
+    	temp = [pp[i]]
+        title = [raw[j][0] for j in range(len(raw)) if pp[i] in raw[j][0]]
+        title = ''.join(title)
+        for j in range(len(feature)):
+        	if feature[j] in title:
+        		temp.append(feature[j])
+        pp_feature.append(temp)
+    p.writeMatrix(pp_feature,'male_PP_feature.txt')
+
+
+
+
+    
 
 if __name__ == '__main__':
-	main()
+    pp_feature()

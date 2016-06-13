@@ -1,4 +1,4 @@
-衣品天成	pp
+﻿衣品天成	pp
 亚历山大王	pp
 优衣库	pp
 彪马	pp
@@ -91,7 +91,7 @@ GLADITH	pp
 LEVIS	pp
 衣恋	pp
 七匹狼	pp
-KAppA	pp
+Kappa	pp
 Naning9	pp
 Lacoste	pp
 mikihouse	pp
