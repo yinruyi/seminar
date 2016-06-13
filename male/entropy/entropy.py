@@ -101,11 +101,18 @@ if __name__=='__main__':
     for i in range(len(dataset)):
         entropy = 0
         for j in range(len(comment[i])):
-            entropy += words_dic[comment[i][j]]
+            if comment[i][j] != '':
+                entropy += words_dic[comment[i][j]]
         temp_result = [dataset[i], entropy]
         # print temp_result
         result.append(temp_result)
         # break
     pretreatment().writeMatrix(result,'entropy.txt')
+    result2=[]
+    for k,v in words_dic.items():
+        if k=='':
+            print v
+        result2.append([k,v])
+    pretreatment().writeMatrix(result2,'word_entropy.txt')
 
     
