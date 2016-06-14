@@ -35,12 +35,12 @@ class pretreatment():
 
 def PP_time():
     p = pretreatment()
-    raw = p.read_txt('female_raw.txt')
+    raw = p.read_txt('all_raw.txt')
     raw = [raw[i].split('\t') for i in range(len(raw))]
     for i in range(len(raw)):
         raw[i][1] = raw[i][1][0:4]
     # print raw[0]
-    pp = p.read_txt('female_pp.txt')
+    pp = p.read_txt('all_pp.txt')
     print pp
     pp_time = []
     for i in range(len(pp)):
@@ -56,18 +56,18 @@ def PP_time():
         pp_time.append(temp)
         # break
     print pp_time[0:2]
-    p.writeMatrix(pp_time,'female_PP_time.txt')
+    p.writeMatrix(pp_time,'all_PP_time.txt')
 
 def pp_feature():
     p = pretreatment()
-    raw = p.read_txt('female_raw.txt')
+    raw = p.read_txt('all_raw.txt')
     raw = [raw[i].split('\t') for i in range(len(raw))]
     for i in range(len(raw)):
         raw[i][1] = raw[i][1][0:4]
     # print raw[0]
-    pp = p.read_txt('female_pp.txt')
+    pp = p.read_txt('all_pp.txt')
     print pp
-    feature = p.read_txt('female_feature_n_a.txt')
+    feature = p.read_txt('all_feature_n_a.txt')
     print feature
     pp_feature = []
     for i in range(len(pp)):
@@ -78,7 +78,7 @@ def pp_feature():
         	if feature[j] in title:
         		temp.append(feature[j])
         pp_feature.append(temp)
-    p.writeMatrix(pp_feature,'female_PP_feature.txt')
+    p.writeMatrix(pp_feature,'all_PP_feature.txt')
 
 
 
