@@ -2,7 +2,7 @@
 import sys
 sys.path.append("../")
 import jieba
-jieba.load_userdict("female_userdic.txt")
+jieba.load_userdict("all_userdic.txt")
 import jieba.posseg as pseg
 import jieba.analyse
 
@@ -62,16 +62,16 @@ class DataAnalysis(pretreatment, Methods):
 
 
 if __name__=='__main__':
-    dataset = pretreatment().read_txt('female.txt')
+    dataset = pretreatment().read_txt('all.txt')
     print dataset[0]
     words = jieba.cut(dataset[1011])
     print '/'.join(words)
     dataset_string = ','.join(dataset)
     print dataset_string[0:100]
     tag = ('n','nr','ns','nsf','nt','nz','nl','ng','a','ad','an','ag','ag','al')
-    #tag = ()
+    # tag = ()
     tfidf = jieba.analyse.extract_tags(dataset_string, topK=1000, withWeight=False, allowPOS=tag)
     print tfidf[0:100]
     tfidf = [[tfidf[i]] for i in range(len(tfidf))]
     print tfidf[0]
-    pretreatment().writeMatrix(tfidf, 'female_feature_n_a.txt')
+    pretreatment().writeMatrix(tfidf, 'all_feature_n_a.txt')
