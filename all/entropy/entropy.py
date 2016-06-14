@@ -2,7 +2,7 @@
 import sys
 sys.path.append("../")
 import jieba
-jieba.load_userdict("female_userdic.txt")
+jieba.load_userdict("all_userdic.txt")
 import jieba.posseg as pseg
 import jieba.analyse
 
@@ -70,7 +70,7 @@ def counts(List):
     return result
 
 if __name__=='__main__':
-    dataset = pretreatment().read_txt('female.txt')
+    dataset = pretreatment().read_txt('all.txt')
     print dataset[0]
     # words = jieba.cut(dataset[1011])
     # print '/'.join(words)
